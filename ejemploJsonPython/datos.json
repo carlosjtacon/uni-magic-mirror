@@ -1,0 +1,15 @@
+{"taller":
+    [
+    {"piezas":[
+        { "nombrePieza":"engranaje", "cantidad":20 },
+        { "nombrePieza":"eje", "cantidad":3 },
+        { "nombrePieza":"tornillo", "cantidad":50 }
+            ]
+        },
+    {"herramientas":[
+        {"nombreHerramienta":"destornillador", "cantidad":5},
+        {"nombreHerramienta":"llaveInglesa", "cantidad":3}
+            ]
+        }
+    ]
+}
