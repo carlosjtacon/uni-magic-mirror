@@ -1,5 +1,12 @@
 <div id="mirror">
-  <div class="widget" id="clock">
+  
+  <!-- NO HACE FALTA ESTE ESTADO PERO PARA COMPROBAR QUE FUNCIONA -->
+  <div *ngIf="controller.status == 0" class="widget" id="void">
+    VACIO
+  </div>
+  
+  <div *ngIf="controller.status == 1" class="widget" id="clock">
     <p class="widget-content">{{clock}}</p>
   </div>
+
 </div>
