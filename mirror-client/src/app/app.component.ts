@@ -10,22 +10,31 @@ import { Observable } from 'rxjs/Rx';
 export class AppComponent {
   controller = { status: 0, data: {} };
   clock = '';
+  timer = 0;
 
   constructor() {
-    Observable.interval(2000).subscribe(x => {
+    // tenemos que decidir la cantidad de tiempo del intervalo de actualización
+    Observable.interval(3000).subscribe(x => {
       this.controller = this.getController();
+      if (this.controller.status === 2) {
+        this.timer = 180 + 1; // tres minutos y uno extra para que empiece en 180 segundos
+      }
     });
 
     Observable.interval(1000).subscribe(x => {
       const date = new Date();
       this.clock = date.getHours() + ':' + date.getMinutes();
     });
+
+    Observable.interval(1000).subscribe(x => {
+      this.timer -= 1;
+    });
   }
 
   getController() {
     // TODO: https://stackoverflow.com/questions/35316583/angular2-http-at-an-interval
-    const c = { status: 0, data: {} }
-    c.status = Math.floor(Math.random() * 2); //random entre 0 y 1
+    const c = { status: 0, data: { weather: { temperature: '35ºC' } } };
+    c.status = Math.floor(Math.random() * 4); //random entre 0 y 3
     return c;
   }
 }

@@ -16,10 +16,20 @@
 
 .widget-content {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 140px;
+    text-align: center;
 }
 
 #clock {
+    font-size: 140px;
     /* background-color: red; */
-    text-align: center;
+}
+
+#timer {
+    font-size: 140px;
+    /* background-color: red; */
+}
+
+#weather {
+    font-size: 140px;
+    /* background-color: red; */
 }
