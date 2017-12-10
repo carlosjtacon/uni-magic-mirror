@@ -38,9 +38,16 @@ def do_login():
         return "<p><b>FUERA DE AQUÍ %r INTRUSO. TUS DATOS NO SON CORRECTOS</b></p>"%usuario
 
 #ejemplo de json
-@route('/json/')
+@route('/json')
 def ejemplo():
     data = request.json
+    #todavia no se que hacer con el json cuando probemos con uno de verdad veremos como funciona
     print data
+
+#ejemplo json post
+@route('/json', method='POST')
+def postJson():
+    datos = request.json
+    #igual que antes: todavía no se qué debo hacer con el json, pero con esto lo recibimos
 
 run(host = 'localhost', port = '8000', debug = True)
