@@ -17,18 +17,16 @@ export class AppComponent {
     Observable.interval(3000).subscribe(x => {
       this.controller = this.getController();
       if (this.controller.status === 2) {
-        this.timer = 180 + 1; // tres minutos y uno extra para que empiece en 180 segundos
+        this.timer = 180; // tres minutos
       }
     });
 
     Observable.interval(1000).subscribe(x => {
       const date = new Date();
       this.clock = date.getHours() + ':' + date.getMinutes();
-    });
-
-    Observable.interval(1000).subscribe(x => {
       this.timer -= 1;
     });
+
   }
 
   getController() {
