@@ -3,6 +3,7 @@
 
 import json
 from bottle import Bottle, route, run, request
+from random import randint
 
 #ejemplo basico de get
 @route('/index')
@@ -49,5 +50,24 @@ def ejemplo():
 def postJson():
     datos = request.json
     #igual que antes: todavía no se qué debo hacer con el json, pero con esto lo recibimos
+
+
+#ruta a la que el cliente hará peticiones
+@route('/status')
+def getStatus():
+    """Este método devolverá un json comprensible para el cliente 
+    con un objeto global status que debemos crear"""
+    status = randint(0, 3)
+    response = {'status': status, 'data': {'weather': {'temperature': 35}}}
+    return str(response)
+
+
+#ruta a la que hey-athena enviará datos
+@route('/athena', method='POST')
+def postAthena():
+    """Athena enviará datos a esta url, esos datos modificarán el 
+    objeto status que se devolverá en la petición getStatus()"""
+    
+
 
 run(host = 'localhost', port = '8000', debug = True)

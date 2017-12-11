@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [HttpService]
 })
 
 export class AppComponent {
@@ -12,13 +14,19 @@ export class AppComponent {
   clock = '';
   timer = 0;
 
-  constructor() {
+  constructor(private httpService: HttpService) {
     // tenemos que decidir la cantidad de tiempo del intervalo de actualización
     Observable.interval(3000).subscribe(x => {
-      this.controller = this.getController();
-      if (this.controller.status === 2) {
-        this.timer = 180; // tres minutos
-      }
+      this.httpService.getStatus()
+        .subscribe(
+          (data) => {
+            this.controller = data;
+            if (this.controller.status === 2) {
+              this.timer = 180; // tres minutos
+            }
+          },
+          (err) => { console.log(err); }
+        );
     });
 
     Observable.interval(1000).subscribe(x => {
