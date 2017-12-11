@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import bottle
 from bottle import Bottle, route, run, request
 from random import randint
 
@@ -53,13 +54,17 @@ def postJson():
 
 
 #ruta a la que el cliente hará peticiones
-@route('/status')
+@route('/status', methods='GET OPTIONS'.split())
 def getStatus():
     """Este método devolverá un json comprensible para el cliente 
     con un objeto global status que debemos crear"""
+    bottle.response.set_header("Access-Control-Allow-Origin", "*")
+    bottle.response.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+    bottle.response.set_header("Access-Control-Allow-Headers", "Origin, Content-Type")
+
     status = randint(0, 3)
     response = {'status': status, 'data': {'weather': {'temperature': 35}}}
-    return str(response)
+    return response
 
 
 #ruta a la que hey-athena enviará datos

@@ -14,7 +14,7 @@ export class HttpService {
   getStatus() {
     return this.http.get('http://localhost:8000/status')
       .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   }
 
 }
