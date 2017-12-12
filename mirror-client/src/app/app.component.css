@@ -16,20 +16,34 @@
 
 .widget-content {
     font-family: 'Ubuntu', sans-serif;
-    text-align: center;
 }
 
 #clock {
     font-size: 140px;
+    text-align: center;
     /* background-color: red; */
 }
 
 #timer {
     font-size: 140px;
+    text-align: center;
     /* background-color: red; */
 }
 
-#weather {
+#temperature {
     font-size: 140px;
+    text-align: center;
+    /* background-color: red; */
+}
+ 
+#weather {
+    font-size: 90px;
+    text-align: center;
+    /* background-color: red; */
+}
+
+#alerts {
+    font-size: 70px;
+    text-align: left;
     /* background-color: red; */
 }

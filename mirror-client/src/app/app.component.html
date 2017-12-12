@@ -5,11 +5,20 @@
   </div>
 
   <div *ngIf="controller.status == 2" class="widget" id="timer">
-    <p class="widget-content">{{timer}}</p>
+    <p class="widget-content">{{timer}} s</p>
   </div>
 
   <div *ngIf="controller.status == 3" class="widget" id="temperature">
-    <p class="widget-content">{{controller.sensor.temperature}}</p>
+    <p class="widget-content">{{controller.sensors.temperature}} ºC</p>
+  </div>
+  
+  <div *ngIf="controller.status == 4" class="widget" id="weather">
+    <p *ngIf="weather.rain" class="widget-content">Llueve!!!</p>
+    <p class="widget-content">{{weather.temperature + weather.units}}</p>
+  </div>
+  
+  <div *ngIf="controller.status == 5" class="widget" id="alerts">
+    <p class="widget-content">{{alerts.toUpperCase()}}</p>
   </div>
 
 </div>

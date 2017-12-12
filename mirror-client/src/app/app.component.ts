@@ -15,8 +15,12 @@ export class AppComponent {
 
   clock = '';
   timer = 0;
-  weather = {};
-  alerts = {}
+  weather = {
+    temperature: 28,
+    units: 'º C',
+    rain: true
+  };
+  alerts = 'se proclama la república catalana y se cierran todas las fronteras';
 
   constructor(private httpService: HttpService) {
     // tenemos que decidir la cantidad de tiempo del intervalo de actualización
