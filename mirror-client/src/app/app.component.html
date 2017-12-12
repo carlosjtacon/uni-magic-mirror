@@ -8,8 +8,8 @@
     <p class="widget-content">{{timer}}</p>
   </div>
 
-  <div *ngIf="controller.status == 3" class="widget" id="weather">
-    <p class="widget-content">{{controller.data.weather.temperature}}</p>
+  <div *ngIf="controller.status == 3" class="widget" id="temperature">
+    <p class="widget-content">{{controller.sensor.temperature}}</p>
   </div>
 
 </div>

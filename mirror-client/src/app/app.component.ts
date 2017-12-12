@@ -10,9 +10,13 @@ import { HttpService } from './http.service';
 })
 
 export class AppComponent {
-  controller = { status: 0, data: {} };
+
+  controller = { status: 0 };
+
   clock = '';
   timer = 0;
+  weather = {};
+  alerts = {}
 
   constructor(private httpService: HttpService) {
     // tenemos que decidir la cantidad de tiempo del intervalo de actualización
@@ -20,10 +24,10 @@ export class AppComponent {
       this.httpService.getStatus()
         .subscribe(
           (data) => {
-            this.controller = data;
-            if (this.controller.status === 2) {
+            if (this.controller.status !== 2 && data.status === 2) {
               this.timer = 180; // tres minutos
             }
+            this.controller = data;
           },
           (err) => { console.log(err); }
         );
@@ -31,7 +35,9 @@ export class AppComponent {
 
     Observable.interval(1000).subscribe(x => {
       const date = new Date();
-      this.clock = date.getHours() + ':' + date.getMinutes();
+      const hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+      const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+      this.clock = hours + ':' + minutes;
       this.timer -= 1;
     });
 

@@ -63,7 +63,13 @@ def getStatus():
     bottle.response.set_header("Access-Control-Allow-Headers", "Origin, Content-Type")
 
     status = randint(0, 3)
-    response = {'status': status, 'data': {'weather': {'temperature': 35}}}
+    response = {
+        'status': 2,
+        'sensors': {
+            'temperature': 35,
+            'humidity': 10
+            }
+        }
     return response
 
 
