@@ -31,6 +31,9 @@ def getStatus():
 def postAthena():
     """Athena enviará datos a esta url, esos datos modificarán el 
     objeto status que se devolverá en la petición getStatus()"""
+
+    req.body
+    
     
 
 
