@@ -1,12 +1,18 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import json
-import bottle
-from bottle import Bottle, route, run, request
+import bottle, json
 from random import randint
+from bottle import route, run, request
 
-#ruta a la que el cliente hará peticiones
+# variable global diccionario (dict) 
+# que contiene la respuesta a devolver
+respuesta = {
+    'status': 0,
+    'sensors': {
+        'temperature': 0,
+        'humidity': 0
+    }
+}
+
+# ruta a la que el cliente hará peticiones
 @route('/status', methods='GET OPTIONS'.split())
 def getStatus():
     """Este método devolverá un json comprensible para el cliente 
@@ -15,18 +21,15 @@ def getStatus():
     bottle.response.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
     bottle.response.set_header("Access-Control-Allow-Headers", "Origin, Content-Type")
 
-    status = randint(0, 5)
-    response = {
-        'status': status,
-        'sensors': {
-            'temperature': 35,
-            'humidity': 10
-            }
-        }
-    return response
+    # forma de actualizar la variable global de respuesta
+    # se tendrá que hacer igual desde el POST y eliminar estas líneas
+    status = { 'status': randint(0, 5) }
+    respuesta.update(status)
+    
+    return respuesta
 
 
-#ruta a la que hey-athena enviará datos
+# ruta a la que hey-athena enviará datos
 @route('/athena', method='POST')
 def postAthena():
     """Athena enviará datos a esta url, esos datos modificarán el 
