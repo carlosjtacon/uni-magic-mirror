@@ -24,7 +24,7 @@ export class AppComponent {
 
   constructor(private httpService: HttpService) {
     // tenemos que decidir la cantidad de tiempo del intervalo de actualización
-    Observable.interval(3000).subscribe(x => {
+    Observable.interval(1000).subscribe(x => {
       this.httpService.getStatus()
         .subscribe(
           (data) => {

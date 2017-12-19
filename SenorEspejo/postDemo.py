@@ -11,7 +11,7 @@ try:
             'humidity': sensores[1],
             'presence': sensores[3],
             'pulsadorCepillo': '0',
-            'pulsadorAgua':'1'
+            'pulsadorAgua':'0'
         }
     }
 
