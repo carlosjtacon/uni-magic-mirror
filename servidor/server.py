@@ -8,7 +8,10 @@ respuesta = {
     'status': 0,
     'sensors': {
         'temperature': 0,
-        'humidity': 0
+        'humidity': 0,
+        'presence': 0,
+        'pulsadorCepillo': 0,
+        'pulsadorAgua': 0
     }
 }
 
@@ -23,8 +26,8 @@ def getStatus():
 
     # forma de actualizar la variable global de respuesta
     # se tendrá que hacer igual desde el POST y eliminar estas líneas
-    status = { 'status': randint(0, 5) }
-    respuesta.update(status)
+    # status = { 'status': randint(0, 5) }
+    # respuesta.update(status)
     
     return respuesta
 
@@ -35,12 +38,33 @@ def postAthena():
     """Athena enviará datos a esta url, esos datos modificarán el 
     objeto status que se devolverá en la petición getStatus()"""
 
-    status = request.body.read();
-    respuesta.update(status)
+    respuesta.update(json.loads(request.json))
+    print(respuesta)
 
-    return respuesta
     
+# ruta a la que arduino enviará datos
+@route('/arduino', method='POST')
+def postArduino():
+    """Arduino enviará datos a esta url, esos datos modificarán el 
+    objeto status que se devolverá en la petición getStatus()"""
     
+    respuesta.update(json.loads(request.json))
+    
+    if respuesta['sensors']['presence'] == '1':
+        # el sensor de presencia debería funcionar como un pulsador 
+        # solo mandando 1 cuando se detecte cambio y 0 si sigue igual
+        status = {'status': 1}
+        respuesta.update(status)
+
+    if respuesta['sensors']['pulsadorCepillo'] == '1':
+        status = {'status': 2}
+        respuesta.update(status)
+    
+    if respuesta['sensors']['pulsadorAgua'] == '1':
+        status = {'status': 3}
+        respuesta.update(status)
+
+    print(respuesta)  
 
 
 run(host = 'localhost', port = '8000', debug = True)
