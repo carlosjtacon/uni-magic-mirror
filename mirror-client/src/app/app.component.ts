@@ -31,7 +31,7 @@ export class AppComponent {
           (data) => {
             if (this.controller.status !== 2 && data.status === 2) {
               this.timer = 180; // tres minutos
-              this.timerStr = this.refreshTimerStr();
+              this.timerStr = '0' + Math.floor(this.timer / 60) + ':' + (this.timer % 60 < 10 ? '0' + this.timer % 60 : this.timer % 60);
             }
             this.controller = data;
           },
@@ -45,16 +45,9 @@ export class AppComponent {
       const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
       this.clock = hours + ':' + minutes;
       this.timer -= 1;
-      this.timerStr = this.refreshTimerStr();
+      this.timerStr = '0' + Math.floor(this.timer / 60) + ':' + (this.timer % 60 < 10 ? '0' + this.timer % 60 : this.timer % 60);
     });
 
-  }
-
-  refreshTimerStr() {
-    const min = Math.floor(this.timer / 60);
-    const sec = this.timer % 60;
-    const secs = sec < 10 ? '0' + sec : sec
-    return '0' + min + ':' + secs;
   }
 
   getController() {
