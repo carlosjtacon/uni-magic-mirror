@@ -205,8 +205,9 @@ class Brain():
     
     def error(self):
         """ Inform the user that an error occurred """
-        tts.speak(settings.ERROR)
-        text = input('Continue? (Y/N) ')
+        # tts.speak(settings.ERROR)
+        # text = input('Continue? (Y/N) ')
+        text = 'y'
         #response = stt.active_listen()
         
         return 'y' in text.lower()
