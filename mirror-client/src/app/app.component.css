@@ -2,48 +2,40 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    text-align: center;
     color: white;
 }
 
 .widget {
-    left: 20px;
-    bottom: 20px;
+    left: 80px;
+    bottom: 40px;
     position: absolute;
     width: 800px;
-    height: 400px;
+    /* height: 400px; */
 }
 
 .widget-content {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #clock {
     font-size: 140px;
-    text-align: center;
-    /* background-color: red; */
+    line-height: 0px;    
 }
 
 #timer {
     font-size: 140px;
-    text-align: center;
-    /* background-color: red; */
+    line-height: 0px;
 }
 
 #temperature {
     font-size: 140px;
-    text-align: center;
-    /* background-color: red; */
+    line-height: 0px;
 }
  
 #weather {
     font-size: 90px;
-    text-align: center;
-    /* background-color: red; */
 }
 
 #alerts {
     font-size: 70px;
-    text-align: left;
-    /* background-color: red; */
 }

@@ -5,7 +5,7 @@
   </div>
 
   <div *ngIf="controller.status == 2" class="widget" id="timer">
-    <p class="widget-content">{{timer}} s</p>
+    <p class="widget-content">{{timer >= 0 ? timerStr : clock}}</p>
   </div>
 
   <div *ngIf="controller.status == 3" class="widget" id="temperature">
