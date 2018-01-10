@@ -11,7 +11,8 @@
 """
 
 import re
-import request
+import requests
+import json
 
 from athena.classes.module import Module
 from athena.classes.task import ActiveTask
@@ -49,6 +50,9 @@ class CurrentDayTask(ActiveTask):
         return len(self.cases) > 0
     
     def action(self, text):
+        payload = {'status': 4}
+        requests.post("http://localhost:8000/athena", json=json.dumps(payload))
+
         api_lib['weather_api'].load_conditions()
         api_lib['weather_api'].load_forecast()
         
@@ -77,10 +81,6 @@ class CurrentDayTask(ActiveTask):
             self.list_weather('Condition',       api_lib['weather_api'].fc_day(0)[1])
         api_lib['weather_api'].restore_loc()
 
-        payload = {'4'}
-
-        r = requests.post("http://localhost:8000/", data=payload)
-        
     def list_weather(self, output, value):
         #print('~ '+output+':', value)
         if not self.spoke_once:
