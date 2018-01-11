@@ -1,14 +1,14 @@
 <div id="mirror">
   
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 1"><i class="far fa-clock" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 170"><i class="fas fa-hourglass-start" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 10 && timer < 170"><i class="fas fa-hourglass-half" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 0 && timer < 10"><i class="fas fa-hourglass-end" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer < 0"><i class="far fa-clock" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 3"><i class="fas fa-bath" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 4"><i class="fas fa-sun" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 5"><i class="far fa-bell" data-fa-transform="shrink-4"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 6"><i class="fab fa-btc" data-fa-transform="shrink-4"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 1"><i class="far fa-clock"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 170"><i class="fas fa-hourglass-start"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 10 && timer < 170"><i class="fas fa-hourglass-half"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 0 && timer < 10"><i class="fas fa-hourglass-end"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer < 0"><i class="far fa-clock"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 3"><i class="fas fa-bath"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 4"><i class="fas fa-sun"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 5"><i class="far fa-bell"></i></div>
+  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 6"><i class="fab fa-btc"></i></div>
   
   <div *ngIf="controller.status == 1" class="widget" id="clock">
     <p class="widget-content">{{clock}}</p>
@@ -32,7 +32,7 @@
   </div>
 
   <div *ngIf="controller.status == 6" class="widget" id="bitcoin">
-    <object type="text/html" data="https://cryptowat.ch/bitfinex/btcusd" width="800px" height="600px" style="overflow:auto;">
+    <object type="text/html" data="https://s.tradingview.com/widgetembed/?symbol=COINBASE%3ABTCUSD&interval=5&hidesidetoolbar=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&hideideas=1&theme=Dark&style=1&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=www.livecharts.co.uk&utm_medium=widget&utm_campaign=chart&utm_term=COINBASE%3ABTCUSD" width="800px" height="600px" style="overflow:auto;">
     </object>
   </div>
 

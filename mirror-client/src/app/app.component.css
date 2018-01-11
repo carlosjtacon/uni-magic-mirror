@@ -7,13 +7,13 @@
 
 .icon {
     left: 40px;
-    top: 80px;
+    top: 200px;
     position: absolute;
 }
 
 .widget {
     left: 80px;
-    bottom: 40px;
+    bottom: 200px;
     position: absolute;
     width: 800px;
     /* height: 400px; */
