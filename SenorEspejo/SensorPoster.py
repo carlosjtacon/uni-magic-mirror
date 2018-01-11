@@ -1,7 +1,7 @@
 import requests, json
 import serial
 
-ser = serial.Serial('COM4', 9600)
+ser = serial.Serial('/dev/cu.usbmodem411', 9600)
 while True:
 	try:
 		#datos = '36.00,23.00,73.40,1'

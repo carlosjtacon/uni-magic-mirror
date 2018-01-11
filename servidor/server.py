@@ -50,9 +50,11 @@ def postArduino():
     
     respuesta.update(json.loads(request.json))
     
-    if respuesta['sensors']['presence'] == '1':
-        # el sensor de presencia debería funcionar como un pulsador 
-        # solo mandando 1 cuando se detecte cambio y 0 si sigue igual
+    if respuesta['sensors']['presence'] == '0':
+        status = {'status': 0}
+        respuesta.update(status)
+
+    if respuesta['status'] == 0 and respuesta['sensors']['presence'] == '1':
         status = {'status': 1}
         respuesta.update(status)
 
