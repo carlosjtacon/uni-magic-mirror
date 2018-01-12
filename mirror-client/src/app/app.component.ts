@@ -16,7 +16,6 @@ export class AppComponent {
 
   clock = '';
   timer = 0;
-  timerStr = '';
   weather = {
     temperature: 28,
     units: 'º C',
@@ -32,7 +31,6 @@ export class AppComponent {
           (data) => {
             if (this.controller.status !== 2 && data.status === 2) {
               this.timer = 180; // tres minutos
-              this.timerStr = '0' + Math.floor(this.timer / 60) + ':' + (this.timer % 60 < 10 ? '0' + this.timer % 60 : this.timer % 60);
             }
             this.controller = data;
           },
@@ -46,7 +44,6 @@ export class AppComponent {
       const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
       this.clock = hours + ':' + minutes;
       this.timer -= 1;
-      this.timerStr = '0' + Math.floor(this.timer / 60) + ':' + (this.timer % 60 < 10 ? '0' + this.timer % 60 : this.timer % 60);
     });
 
   }

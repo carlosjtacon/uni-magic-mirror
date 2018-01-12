@@ -1,10 +1,10 @@
 <div id="mirror">
-  
+
   <div class="icon fa-fw fa-10x" *ngIf="controller.status == 1"><i class="far fa-clock"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 170"><i class="fas fa-hourglass-start"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 10 && timer < 170"><i class="fas fa-hourglass-half"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 0 && timer < 10"><i class="fas fa-hourglass-end"></i></div>
-  <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer < 0"><i class="far fa-clock"></i></div>
+  <!-- <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 170"><i class="fas fa-hourglass-start" data-fa-transform="shrink-4"></i></div> -->
+  <!-- <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 10 && timer < 170"><i class="fas fa-hourglass-half"></i></div> -->
+  <!-- <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer >= 0 && timer < 10"><i class="fas fa-hourglass-end"></i></div> -->
+  <!-- <div class="icon fa-fw fa-10x" *ngIf="controller.status == 2 && timer < 0"><i class="far fa-clock"></i></div> -->
   <div class="icon fa-fw fa-10x" *ngIf="controller.status == 3"><i class="fas fa-bath"></i></div>
   <div class="icon fa-fw fa-10x" *ngIf="controller.status == 4"><i class="fas fa-sun"></i></div>
   <div class="icon fa-fw fa-10x" *ngIf="controller.status == 5"><i class="far fa-bell"></i></div>
@@ -15,7 +15,8 @@
   </div>
 
   <div *ngIf="controller.status == 2" class="widget" id="timer">
-    <p class="widget-content">{{timer >= 0 ? timerStr : clock}}</p>
+    <p *ngIf="timer < 0" class="widget-content">{{clock}}</p>
+    <p *ngIf="timer >= 0" class="widget-content">{{'0' + Math.floor(timer / 60) + ':' + (timer % 60 < 10 ? '0' + timer % 60 : timer % 60)}}</p>
   </div>
 
   <div *ngIf="controller.status == 3" class="widget" id="temperature">
