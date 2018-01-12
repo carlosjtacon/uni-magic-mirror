@@ -16,15 +16,58 @@ export class AppComponent {
 
   clock = '';
   timer = 0;
-  weather = {
-    temperature: 28,
-    units: 'º C',
-    rain: true
-  };
+  weather = {};
+  barChartLabels: string[];
+  barChartData: any[];
   alerts = 'se proclama la república catalana y se cierran todas las fronteras';
 
   constructor(private httpService: HttpService) {
     this.Math = Math;
+
+    this.httpService.getWeather()
+      .subscribe(
+        (w) => {
+          this.weather = w;
+          this.barChartLabels = ['1h', '2h', '3h', '4h', '5h', '6h', '7h'];
+          this.barChartData = [
+            { 
+              data: [
+                w.data[0].temp,
+                w.data[1].temp,
+                w.data[2].temp,
+                w.data[3].temp,
+                w.data[4].temp,
+                w.data[5].temp,
+                w.data[6].temp
+              ], label: 'TEMPERATURA (ºC)'
+            },
+            {
+              data: [
+                w.data[0].pop,
+                w.data[1].pop,
+                w.data[2].pop,
+                w.data[3].pop,
+                w.data[4].pop,
+                w.data[5].pop,
+                w.data[6].pop
+              ], label: 'PROBABILIDAD DE LLUVIA (%)'
+            },
+            {
+              data: [
+                w.data[0].clouds,
+                w.data[1].clouds,
+                w.data[2].clouds,
+                w.data[3].clouds,
+                w.data[4].clouds,
+                w.data[5].clouds,
+                w.data[6].clouds
+              ], label: 'NUBES (%)'
+            }
+          ];
+        },
+        (err) => { console.log(err); }
+      );
+
     Observable.interval(1000).subscribe(x => {
       this.httpService.getStatus()
         .subscribe(
@@ -48,10 +91,4 @@ export class AppComponent {
 
   }
 
-  getController() {
-    // TODO: https://stackoverflow.com/questions/35316583/angular2-http-at-an-interval
-    const c = { status: 0, data: { weather: { temperature: '35ºC' } } };
-    c.status = Math.floor(Math.random() * 4); //random entre 0 y 3
-    return c;
-  }
 }

@@ -24,8 +24,7 @@
   </div>
   
   <div *ngIf="controller.status == 4" class="widget" id="weather">
-    <p *ngIf="weather.rain" class="widget-content">Llueve!!!</p>
-    <p class="widget-content">{{weather.temperature + weather.units}}</p>
+    <canvas baseChart chartType="bar" [datasets]="barChartData" [labels]="barChartLabels"></canvas>
   </div>
   
   <div *ngIf="controller.status == 5" class="widget" id="alerts">
