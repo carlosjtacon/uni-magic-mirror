@@ -1,20 +1,29 @@
 import requests, json
 
 try:
-    datos = '36.00,23.00,73.40,1'
 
-    sensores = datos.split(',')
-    # para athena payload = { 'status': numero } y el resto igual
-    payload = {
-        'sensors': {
-            'temperature': sensores[0],
-            'humidity': sensores[1],
-            'presence': sensores[3],
-            'pulsadorCepillo': '0',
-            'pulsadorAgua':'1'
-        }
-    }
+    ## PARA SIMULAR UNA PETICIÓN DE 
+    ## COMANDO DE VOZ CAMBIAR STATUS
+    ## STATUS PARA ATHENA:
+    ##   4: CLIMA
+    ##   5: ALERTAS / NOTICIAS IMPORTANTES
+    ##   6: BITCOIN
+    payload_athena = { 'status': 4 }
+    requests.post("http://localhost:8000/athena", json=json.dumps(payload_athena))
+    
 
-    requests.post("http://localhost:8000/arduino", json=json.dumps(payload))
+    ## PARA SIMULAR UNA PETICIÓN DE ARDUINO 
+    ## MODIFICAR LOS VALORES DE LOS SENSORES
+    # payload_arduino = {
+    #     'sensors': {
+    #         'temperature': '36.00',
+    #         'humidity': '23.00',
+    #         'presence': '0',
+    #         'pulsadorCepillo': '0',
+    #         'pulsadorAgua':'0'
+    #     }
+    # }
+    # requests.post("http://localhost:8000/arduino", json=json.dumps(payload_arduino))
+
 except ValueError:
-    print("Algo no funciono" + ValueError)
+    print("Algo no funcionó" + ValueError)
