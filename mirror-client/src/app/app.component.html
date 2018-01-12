@@ -19,7 +19,7 @@
   </div>
 
   <div *ngIf="controller.status == 3" class="widget" id="temperature">
-    <p class="widget-content">{{controller.sensors.temperature}} ºC</p>
+    <p class="widget-content">AGUA - {{Math.floor(controller.sensors.temperature)}} ºC</p>
   </div>
   
   <div *ngIf="controller.status == 4" class="widget" id="weather">

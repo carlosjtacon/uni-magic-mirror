@@ -34,7 +34,7 @@
 }
 
 #temperature {
-    font-size: 140px;
+    font-size: 110px;
     line-height: 0px;
 }
  
@@ -43,5 +43,5 @@
 }
 
 #alerts {
-    font-size: 70px;
+    font-size: 60px;
 }

@@ -11,6 +11,7 @@ import { HttpService } from './http.service';
 
 export class AppComponent {
 
+  Math: any;
   controller = { status: 0 };
 
   clock = '';
@@ -24,7 +25,7 @@ export class AppComponent {
   alerts = 'se proclama la república catalana y se cierran todas las fronteras';
 
   constructor(private httpService: HttpService) {
-    // tenemos que decidir la cantidad de tiempo del intervalo de actualización
+    this.Math = Math;
     Observable.interval(1000).subscribe(x => {
       this.httpService.getStatus()
         .subscribe(

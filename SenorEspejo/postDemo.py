@@ -14,16 +14,16 @@ try:
 
     ## PARA SIMULAR UNA PETICIÓN DE ARDUINO 
     ## MODIFICAR LOS VALORES DE LOS SENSORES
-    # payload_arduino = {
-    #     'sensors': {
-    #         'temperature': '36.00',
-    #         'humidity': '23.00',
-    #         'presence': '0',
-    #         'pulsadorCepillo': '0',
-    #         'pulsadorAgua':'0'
-    #     }
-    # }
-    # requests.post("http://localhost:8000/arduino", json=json.dumps(payload_arduino))
+    payload_arduino = {
+        'sensors': {
+            'temperature': '36.00',
+            'humidity': '23.00',
+            'presence': '1',
+            'pulsadorCepillo': '0',
+            'pulsadorAgua':'0'
+        }
+    }
+    requests.post("http://localhost:8000/arduino", json=json.dumps(payload_arduino))
 
 except ValueError:
     print("Algo no funcionó" + ValueError)
