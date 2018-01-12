@@ -30,8 +30,8 @@ class WeatherApi(Api):
         self.fc_update_time = -UPDATE_FORECAST_INT
         self.restore_flag = False
         
-        self.default_zip_iata_city = 'Austin'
-        self.default_state_country = 'TX'
+        self.default_zip_iata_city = 'Madrid'
+        self.default_state_country = 'ES'
         
         self.api_key = settings.WUNDERGROUND_KEY
         

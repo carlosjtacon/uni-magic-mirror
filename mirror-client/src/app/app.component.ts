@@ -30,7 +30,7 @@ export class AppComponent {
           this.weather = w;
           this.barChartLabels = ['1h', '2h', '3h', '4h', '5h', '6h', '7h'];
           this.barChartData = [
-            { 
+            {
               data: [
                 w.data[0].temp,
                 w.data[1].temp,

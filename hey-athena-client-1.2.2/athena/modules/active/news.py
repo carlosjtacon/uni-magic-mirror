@@ -16,7 +16,7 @@ import json
 class GetValueTask(ActiveTask):
 
     def __init__(self):
-        super().__init__(words=['important news'])
+        super().__init__(words=['news'])
 
     def action(self, text):
         payload = {'status': 5}
